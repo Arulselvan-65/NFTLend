@@ -38,38 +38,34 @@ export default function LoansPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 relative overflow-hidden">
-      {/* Background gradients */}
       <div className="fixed top-0 left-0 w-full h-full overflow-hidden z-0">
         <div className="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] bg-gradient-radial from-violet-600/20 via-transparent to-transparent rounded-full blur-3xl animate-pulse-slow"></div>
         <div className="absolute bottom-[-20%] right-[-10%] w-[800px] h-[800px] bg-gradient-radial from-blue-600/20 via-transparent to-transparent rounded-full blur-3xl animate-pulse-slow delay-500"></div>
       </div>
 
       <div className="relative z-10">
-        {/* Modified Header Section */}
         <div className="relative mb-8">
-          {/* Decorative gradient line */}
           <div className="absolute -left-8 -right-8 h-px bg-gradient-to-r from-transparent via-violet-500/20 to-transparent" />
 
           <div className="flex justify-between items-center h-16">
-            {/* Left side - Just the stats badge */}
             <div className="flex items-center">
               <span className="px-3 py-1.5 text-sm font-medium text-violet-400 bg-violet-500/10 rounded-full border border-violet-500/20">
                 {activeLoans.length} Active Loans
               </span>
             </div>
 
-            {/* Right side - Action button */}
+            <Link href="/dashboard/loans/createloan">
             <button className="group relative px-4 py-2 rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white font-medium transition-all duration-300 hover:shadow-lg hover:shadow-violet-500/25">
-              <div className="absolute inset-0 bg-white/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-white/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity" />            
               <span className="flex items-center gap-2">
                 <Plus className="w-4 h-4" />
                 <span>New Loan</span>
               </span>
             </button>
+            </Link>
           </div>
         </div>
 
-        {/* Stats Overview */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300">
             <CardContent className="p-4 pt-6 flex">
@@ -114,7 +110,6 @@ export default function LoansPage() {
           </Card>
         </div>
 
-        {/* Active Loans */}
         <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300">
           <CardHeader>
             <CardTitle>Active Loans</CardTitle>
@@ -134,7 +129,7 @@ export default function LoansPage() {
                         <p className="text-sm text-gray-400">Collateral: {loan.collateral}</p>
                       </div>
                     </div>
-                    <Link href="/dashboard/loans/1">
+                    <Link href="/dashboard/loans/loandetails/1">
                     <button className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gray-700/50 hover:bg-gray-700 transition-colors text-sm text-gray-300">
                       View Details
                       <ArrowUpRight className="w-4 h-4" />

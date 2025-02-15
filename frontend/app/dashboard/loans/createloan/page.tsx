@@ -1,0 +1,131 @@
+"use client"
+
+import React, { useState } from 'react';
+import { ArrowLeft, Info } from 'lucide-react';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/CustomCard';
+import Link from 'next/link';
+
+const CreateLoanPage = () => {
+  const [formData, setFormData] = useState({
+    nftContract: '',
+    tokenId: '',
+    loanAmount: '',
+  });
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    console.log('Form submitted:', formData);
+  };
+
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 relative overflow-hidden">
+      <div className="fixed top-0 left-0 w-full h-full overflow-hidden z-0">
+        <div className="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] bg-gradient-radial from-violet-600/20 via-transparent to-transparent rounded-full blur-3xl animate-pulse-slow"></div>
+        <div className="absolute bottom-[-20%] right-[-10%] w-[800px] h-[800px] bg-gradient-radial from-blue-600/20 via-transparent to-transparent rounded-full blur-3xl animate-pulse-slow delay-500"></div>
+      </div>
+
+      <div className="relative z-10">
+        <div className="relative mb-8">
+          <div className="absolute -left-8 -right-8 h-px bg-gradient-to-r from-transparent via-violet-500/20 to-transparent" />
+
+          <div className="flex items-center justify-center h-16 relative px-4">
+            <Link href='/dashboard/loans' className="absolute left-4 flex items-center gap-2">
+              <button className="flex items-center px-4 py-2 rounded-xl bg-gray-800/60 hover:bg-gray-700/80 border border-gray-700/50 shadow-lg backdrop-blur-sm transition-all duration-300 group">
+                <ArrowLeft className="w-4 h-4 text-gray-400 group-hover:text-violet-400 transition-colors" />
+                <span className="ml-2 text-sm font-medium text-gray-400 group-hover:text-violet-400 transition-colors">
+                  Back to Loans
+                </span>
+              </button>
+            </Link>
+            <span className="px-3 py-1.5 text-sm font-medium text-violet-400 bg-violet-500/10 rounded-full border border-violet-500/20">              New Loan Request
+            </span>
+          </div>
+        </div>
+
+        <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300 max-w-2xl mx-auto shadow-xl">
+          <CardHeader>
+            <CardTitle>Create New Loan</CardTitle>
+            <CardDescription>Enter the details for your NFT-backed loan request</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-400 mb-2">
+                    NFT Contract Address
+                  </label>
+                  <input
+                    type="text"
+                    name="nftContract"
+                    value={formData.nftContract}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 outline-none rounded-xl bg-gray-800/40 border border-gray-700/30 focus:border-violet-500/50 focus:ring-2 focus:ring-violet-500/20 transition-all duration-300 text-white placeholder-gray-500"
+                    placeholder="0x..."
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-400 mb-2">
+                    Token ID
+                  </label>
+                  <input
+                    type="text"
+                    name="tokenId"
+                    value={formData.tokenId}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 outline-none rounded-xl bg-gray-800/40 border border-gray-700/30 focus:border-violet-500/50 focus:ring-2 focus:ring-violet-500/20 transition-all duration-300 text-white placeholder-gray-500"
+                    placeholder="Enter NFT token ID"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-400 mb-2">
+                    Loan Amount (ETH)
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      name="loanAmount"
+                      value={formData.loanAmount}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 outline-none rounded-xl bg-gray-800/40 border border-gray-700/30 focus:border-violet-500/50 focus:ring-2 focus:ring-violet-500/20 transition-all duration-300 text-white placeholder-gray-500"
+                      placeholder="0.00"
+                      step="0.01"
+                      required
+                    />
+                    <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-2 text-gray-400">
+                      <Info className="w-4 h-4" />
+                      <span className="text-sm">Max LTV applies</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-4">
+                <button
+                  type="submit"
+                  className="w-full group relative px-4 py-3 rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white font-medium transition-all duration-300 hover:shadow-lg hover:shadow-violet-500/25"
+                >
+                  <div className="absolute inset-0 bg-white/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                  Create Loan Request
+                </button>
+              </div>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+};
+
+export default CreateLoanPage;
