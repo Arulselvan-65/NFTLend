@@ -36,23 +36,24 @@ const CreateLoanPage = () => {
         <div className="relative mb-8">
           <div className="absolute -left-8 -right-8 h-px bg-gradient-to-r from-transparent via-violet-500/20 to-transparent" />
 
-          <div className="flex items-center justify-center h-16 relative px-4">
-            <Link href='/dashboard/loans' className="absolute left-4 flex items-center gap-2">
-              <button className="flex items-center px-4 py-2 rounded-xl bg-gray-800/60 hover:bg-gray-700/80 border border-gray-700/50 shadow-lg backdrop-blur-sm transition-all duration-300 group">
-                <ArrowLeft className="w-4 h-4 text-gray-400 group-hover:text-violet-400 transition-colors" />
-                <span className="ml-2 text-sm font-medium text-gray-400 group-hover:text-violet-400 transition-colors">
-                  Back to Loans
-                </span>
+          <div className="flex items-center justify-center h-16 relative">
+            <Link href='/dashboard/loans' className="absolute left-0 flex items-center gap-2">
+              <button className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                <ArrowLeft className="w-5 h-5 text-gray-600 dark:text-gray-400" />
               </button>
+              <span className="hidden md:inline text-gray-400">Back to Loan Page</span>
             </Link>
-            <span className="px-3 py-1.5 text-sm font-medium text-violet-400 bg-violet-500/10 rounded-full border border-violet-500/20">              New Loan Request
+            <span className="flex justify-center items-center h-10 w-40 text-sm font-medium text-violet-400 bg-violet-500/10 rounded-full border border-violet-500/20">
+              New Loan Request
             </span>
           </div>
+
+
         </div>
 
         <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300 max-w-2xl mx-auto shadow-xl">
           <CardHeader>
-            <CardTitle>Create New Loan</CardTitle>
+            <CardTitle className="text-xl">Create New Loan</CardTitle>
             <CardDescription>Enter the details for your NFT-backed loan request</CardDescription>
           </CardHeader>
           <CardContent>
@@ -67,7 +68,7 @@ const CreateLoanPage = () => {
                     name="nftContract"
                     value={formData.nftContract}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 outline-none rounded-xl bg-gray-800/40 border border-gray-700/30 focus:border-violet-500/50 focus:ring-2 focus:ring-violet-500/20 transition-all duration-300 text-white placeholder-gray-500"
+                    className="w-full px-4 py-3 outline-none rounded-xl bg-gray-800/40 border border-gray-700/30 focus:border-violet-500/50 focus:ring-violet-500/20 transition-all duration-300 text-white placeholder-gray-500"
                     placeholder="0x..."
                     required
                   />
@@ -82,7 +83,7 @@ const CreateLoanPage = () => {
                     name="tokenId"
                     value={formData.tokenId}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 outline-none rounded-xl bg-gray-800/40 border border-gray-700/30 focus:border-violet-500/50 focus:ring-2 focus:ring-violet-500/20 transition-all duration-300 text-white placeholder-gray-500"
+                    className="w-full px-4 py-3 outline-none rounded-xl bg-gray-800/40 border border-gray-700/30 focus:border-violet-500/50 focus:ring-violet-500/20 transition-all duration-300 text-white placeholder-gray-500"
                     placeholder="Enter NFT token ID"
                     required
                   />
@@ -98,7 +99,7 @@ const CreateLoanPage = () => {
                       name="loanAmount"
                       value={formData.loanAmount}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 outline-none rounded-xl bg-gray-800/40 border border-gray-700/30 focus:border-violet-500/50 focus:ring-2 focus:ring-violet-500/20 transition-all duration-300 text-white placeholder-gray-500"
+                      className="w-full px-4 py-3 outline-none rounded-xl bg-gray-800/40 border border-gray-700/30 focus:border-violet-500/50 focus:ring-violet-500/20 transition-all duration-300 text-white placeholder-gray-500"
                       placeholder="0.00"
                       step="0.01"
                       required
