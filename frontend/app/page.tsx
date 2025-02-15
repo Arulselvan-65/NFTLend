@@ -1,9 +1,11 @@
+"use client"
 import React from 'react';
 import { Play, Shield, Zap, ChevronRight, ArrowUpRight } from 'lucide-react';
+import  Link  from 'next/link';
 
 export default function LandingPage() {
   return (
-    <div className="overflow-hidden bg-[#030014] relative min-h-screen">
+    <div className="overflow-hidden bg-gray-50 dark:bg-gray-900 relative min-h-screen">
       <div className="fixed top-0 left-0 w-full h-full overflow-hidden z-0">
         <div className="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] bg-gradient-radial from-violet-600/30 via-transparent to-transparent rounded-full blur-3xl animate-pulse-slow"></div>
         <div className="absolute bottom-[-20%] right-[-10%] w-[800px] h-[800px] bg-gradient-radial from-blue-600/30 via-transparent to-transparent rounded-full blur-3xl animate-pulse-slow delay-500"></div>
@@ -37,10 +39,12 @@ export default function LandingPage() {
                 rounded-full font-semibold shadow-xl hover:shadow-fuchsia-500/30 
                 transform hover:scale-105 transition-all duration-300 text-lg">
                 <div className="absolute inset-0 bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-full blur opacity-50 group-hover:opacity-75 transition-opacity"></div>
+                <Link href="/dashboard">
                 <div className="relative flex items-center">
                   Launch App
                   <Play className="ml-2 w-5 h-5" />
                 </div>
+                </Link>
               </button>
               <button className="relative overflow-hidden border-2 border-fuchsia-500/20 text-white px-8 py-4 
                 rounded-full font-semibold hover:bg-fuchsia-500/10 
