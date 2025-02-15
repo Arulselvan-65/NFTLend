@@ -39,7 +39,7 @@ export const Sidebar = ({ isOpen, walletAddress = '0x1234...5678' }: SidebarProp
 
         <nav className="flex-1 px-3 py-4 overflow-y-auto">
           {tabs.map((tab) => {
-            const isActive = pathname === tab.path;
+            const isActive = pathname.startsWith(tab.path);
             const Icon = tab.icon;
 
             return (

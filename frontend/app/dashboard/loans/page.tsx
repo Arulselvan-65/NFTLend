@@ -10,6 +10,7 @@ import {
   Plus,
 } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/CustomCard';
+import Link from 'next/link';
 
 export default function LoansPage() {
   const [activeLoans, setActiveLoans] = useState([
@@ -133,10 +134,12 @@ export default function LoansPage() {
                         <p className="text-sm text-gray-400">Collateral: {loan.collateral}</p>
                       </div>
                     </div>
+                    <Link href="/dashboard/loans/1">
                     <button className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gray-700/50 hover:bg-gray-700 transition-colors text-sm text-gray-300">
                       View Details
                       <ArrowUpRight className="w-4 h-4" />
                     </button>
+                    </Link>
                   </div>
 
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
