@@ -1,4 +1,3 @@
-// components/LoanTable.tsx
 "use client"
 
 import { RefreshCw } from 'lucide-react';

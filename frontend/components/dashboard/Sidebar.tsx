@@ -21,6 +21,15 @@ export const Sidebar = ({ isOpen, walletAddress = '0x1234...5678' }: SidebarProp
     { id: 'settings', label: 'Settings', icon: Settings, path: '/dashboard/settings' },
   ];
 
+  const isTabActive = (tabPath: string) => {
+    // Handle exact match for dashboard
+    if (tabPath === '/dashboard') {
+      return pathname === '/dashboard';
+    }
+    // For other routes, check if the pathname includes the tab path
+    return pathname.startsWith(tabPath);
+  };
+
   return (
     <aside
       className={`fixed top-16 left-0 h-[calc(100vh-4rem)] bg-gray-900/95 backdrop-blur-xl border-r border-gray-800 z-40 transition-all duration-300 ease-in-out ${
@@ -29,17 +38,17 @@ export const Sidebar = ({ isOpen, walletAddress = '0x1234...5678' }: SidebarProp
     >
       <div className="flex flex-col h-full">
         <div className="p-6 border-b border-gray-800/50">
-        <Link href="/">
-          <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-fuchsia-500">
-            NFTLend
-          </h1>
-        </Link>
+          <Link href="/">
+            <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-fuchsia-500">
+              NFTLend
+            </h1>
+          </Link>
           <p className="text-sm text-gray-400 mt-1">Decentralized NFT Lending</p>
         </div>
 
         <nav className="flex-1 px-3 py-4 overflow-y-auto">
           {tabs.map((tab) => {
-            const isActive = pathname.startsWith(tab.path);
+            const isActive = isTabActive(tab.path);
             const Icon = tab.icon;
 
             return (
@@ -100,3 +109,5 @@ export const Sidebar = ({ isOpen, walletAddress = '0x1234...5678' }: SidebarProp
     </aside>
   );
 };
+
+export default Sidebar;
