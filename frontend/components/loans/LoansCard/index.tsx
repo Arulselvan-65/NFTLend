@@ -40,12 +40,12 @@ export const ActiveLoansCard = ({ activeLoans }: ActiveLoansCardProps) => {
         </div>
       </CardHeader>
       
-      <CardContent className="p-0">
+      <CardContent className="!p-0">
         <div className="space-y-4">
           {activeLoans.map((loan) => (
             <Link 
               key={loan.id}
-              href={`/dashboard/loans/loandetails/${loan.id}`}
+              href={`/dashboard/myloans/${loan.id}/details`}
               className="block group"
             >
               <div className="p-4 rounded-lg md:border-none border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/50 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-200 relative hover:shadow-sm">

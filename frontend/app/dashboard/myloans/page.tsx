@@ -10,7 +10,7 @@ import {
   Plus,
 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import { ActiveLoansCard } from "@/components/LoansCard";
+import { ActiveLoansCard } from "@/components/loans/LoansCard";
 
 import Link from 'next/link';
 
@@ -46,28 +46,6 @@ export default function LoansPage() {
       </div>
 
       <div className="relative z-10">
-        <div className="relative mb-8">
-          <div className="absolute -left-8 -right-8 h-px bg-gradient-to-r from-transparent via-violet-500/20 to-transparent" />
-
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <span className="px-3 py-1.5 text-sm font-medium text-violet-400 bg-violet-500/10 rounded-full border border-violet-500/20">
-                {activeLoans.length} Active Loans
-              </span>
-            </div>
-
-            <Link href="/dashboard/loans/createloan">
-              <button className="group relative px-4 py-2 rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white font-medium transition-all duration-300 hover:shadow-lg hover:shadow-violet-500/25">
-                <div className="absolute inset-0 bg-white/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                <span className="flex items-center gap-2">
-                  <Plus className="w-4 h-4" />
-                  <span>New Loan</span>
-                </span>
-              </button>
-            </Link>
-          </div>
-        </div>
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300">
             <CardContent className="p-4 pt-6 flex">

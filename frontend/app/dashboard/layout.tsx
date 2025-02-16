@@ -2,8 +2,8 @@
 // DashboardLayout.tsx
 import React, { ReactNode, useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import Navbar from '@/components/Navbar';
-import { Sidebar } from '@/components/dashboard/Sidebar';
+import { Navbar } from '@/components/layout/Navbar';
+import { Sidebar } from '@/components/layout/Sidebar';
 
 interface DashboardLayoutProps {
   children: ReactNode;

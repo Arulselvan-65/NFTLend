@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 import Link from 'next/link';
-import { Home, Wallet, Gift, History, Settings } from 'lucide-react';
+import { Home, Wallet, ArrowUpFromLine, Settings,ArrowDownToLine } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
 interface SidebarProps {
@@ -37,10 +37,9 @@ export const Sidebar = ({ isOpen, onClose, walletAddress = '0x1234...5678' }: Si
 
   const tabs = [
     { id: 'dashboard', label: 'Dashboard', icon: Home, path: '/dashboard' },
-    { id: 'loans', label: 'My Loans', icon: Wallet, path: '/dashboard/loans' },
-    { id: 'offers', label: 'Offers', icon: Gift, path: '/dashboard/offers' },
-    { id: 'history', label: 'History', icon: History, path: '/dashboard/history' },
-    { id: 'settings', label: 'Settings', icon: Settings, path: '/dashboard/settings' },
+    { id: 'loans', label: 'My Loans', icon: Wallet, path: '/dashboard/myloans' },
+    { id: 'borrow', label: 'Borrow', icon: ArrowDownToLine, path: '/dashboard/borrow' },
+    { id: 'lend', label: 'Lend', icon: ArrowUpFromLine, path: '/dashboard/lend' }
   ];
 
   const isTabActive = (tabPath: string) => {

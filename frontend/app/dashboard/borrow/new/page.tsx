@@ -37,11 +37,11 @@ const CreateLoanPage = () => {
           <div className="absolute -left-8 -right-8 h-px bg-gradient-to-r from-transparent via-violet-500/20 to-transparent" />
 
           <div className="flex items-center justify-center h-16 relative">
-            <Link href='/dashboard/loans' className="absolute left-0 flex items-center gap-2">
+            <Link href='/dashboard/myloans' className="absolute left-0 flex items-center gap-2">
               <button className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
                 <ArrowLeft className="w-5 h-5 text-gray-600 dark:text-gray-400" />
               </button>
-              <span className="hidden md:inline text-gray-400">Back to Loan Page</span>
+              <span className="hidden md:inline text-gray-400">Back</span>
             </Link>
             <span className="flex justify-center items-center h-10 w-40 text-sm font-medium text-violet-400 bg-violet-500/10 rounded-full border border-violet-500/20">
               New Loan Request
@@ -113,13 +113,13 @@ const CreateLoanPage = () => {
               </div>
 
               <div className="pt-4">
-                <button
-                  type="submit"
-                  className="w-full group relative px-4 py-3 rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white font-medium transition-all duration-300 hover:shadow-lg hover:shadow-violet-500/25"
-                >
-                  <div className="absolute inset-0 bg-white/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                  Create Loan Request
-                </button>
+              <button
+                type="submit"
+                className="w-full px-4 py-3 rounded-xl bg-violet-500 text-white font-medium transition-all duration-200 
+                hover:bg-violet-600 hover:shadow-md"
+              >
+                Create Loan Request
+              </button>
               </div>
             </form>
           </CardContent>

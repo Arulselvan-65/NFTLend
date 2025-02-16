@@ -51,7 +51,7 @@ export default function LoanDetailsPage() {
 
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-4">
-              <Link href='/dashboard/loans'>
+              <Link href='/dashboard/myloans'>
                 <button className="p-2 rounded-xl bg-gray-800/40 hover:bg-gray-800/60 transition-colors">
                   <ArrowLeft className="w-5 h-5 text-gray-400" />
                 </button>
