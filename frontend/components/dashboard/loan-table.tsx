@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
   CardDescription,
-} from "@/components/CustomCard";
+} from "@/components/ui/card";
 
 interface Loan {
   id: number;

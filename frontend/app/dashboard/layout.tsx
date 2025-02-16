@@ -1,5 +1,6 @@
 "use client"
-import React, { ReactNode, useState } from 'react';
+// DashboardLayout.tsx
+import React, { ReactNode, useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import { Sidebar } from '@/components/dashboard/Sidebar';
@@ -10,11 +11,28 @@ interface DashboardLayoutProps {
 
 const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   const pathname = usePathname();
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [networkStatus] = useState<'connected' | 'disconnected'>('connected');
   const [walletAddress] = useState('0x1234...5678');
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Derive active tab from pathname
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+      if (window.innerWidth <= 768) {
+        setIsSidebarOpen(false);
+      } else {
+        setIsSidebarOpen(true);
+      }
+    };
+    checkMobile();
+
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const getActiveTab = (path: string) => {
     if (path === '/dashboard') return 'dashboard';
     const match = path.match(/\/dashboard\/(.+)/);
@@ -25,6 +43,12 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const handleSidebarClose = () => {
+    if (isMobile) {
+      setIsSidebarOpen(false);
+    }
   };
 
   return (
@@ -38,6 +62,8 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
 
       <Sidebar
         isOpen={isSidebarOpen}
+        onClose={handleSidebarClose}
+        walletAddress={walletAddress}
       />
 
       <main
@@ -50,11 +76,10 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
         </div>
       </main>
 
-      {/* Overlay for mobile sidebar */}
-      {isSidebarOpen && (
+      {isSidebarOpen && isMobile && (
         <div
           className="md:hidden fixed inset-0 bg-gray-900 bg-opacity-50 z-30 transition-opacity duration-300"
-          onClick={toggleSidebar}
+          onClick={handleSidebarClose}
           aria-hidden="true"
         />
       )}

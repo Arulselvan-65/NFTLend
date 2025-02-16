@@ -13,7 +13,7 @@ import {
 import StatsCard from '@/components/dashboard/stats-card';
 import ActivityChart from '@/components/dashboard/activity-chart';
 import LoanTable from '@/components/dashboard/loan-table';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/CustomCard';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 
 export default function DashboardPage() {
   const [balance, setBalance] = useState('0');

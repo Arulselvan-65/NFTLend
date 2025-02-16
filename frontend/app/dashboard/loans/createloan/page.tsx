@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { ArrowLeft, Info } from 'lucide-react';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/CustomCard';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import Link from 'next/link';
 
 const CreateLoanPage = () => {

@@ -12,7 +12,7 @@ export default function LandingPage() {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] bg-gradient-radial from-fuchsia-600/20 via-transparent to-transparent rounded-full blur-3xl animate-pulse-slow delay-1000"></div>
       </div>
 
-      <div className="fixed inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-20"></div>
+      <div className="fixed inset-0 bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-20"></div>
 
       <div className="relative z-10">
         <div className="flex flex-col items-center justify-start min-h-screen px-4 md:px-8 lg:px-16 pt-8 md:pt-0">

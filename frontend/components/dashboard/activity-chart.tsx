@@ -9,7 +9,7 @@ import {
   CardHeader,
   CardTitle,
   CardDescription,
-} from "@/components/CustomCard";
+} from "@/components/ui/card";
 
 interface ActivityData {
   name: string;

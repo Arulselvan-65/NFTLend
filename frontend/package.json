@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -13,7 +13,7 @@
     "ethers": "^6.13.5",
     "framer-motion": "^12.4.3",
     "lucide-react": "^0.475.0",
-   "next": "14.2.14",
+    "next": "14.2.14",
     "react": "^18",
     "react-dom": "^18",
     "recharts": "^2.15.1"
