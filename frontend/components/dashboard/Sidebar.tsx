@@ -51,7 +51,6 @@ export const Sidebar = ({ isOpen, onClose, walletAddress = '0x1234...5678' }: Si
   };
 
   const handleNavigation = () => {
-    // Always call onClose - it will only take effect on mobile due to the Layout logic
     onClose();
   };
 

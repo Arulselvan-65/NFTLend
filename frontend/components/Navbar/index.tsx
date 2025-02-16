@@ -34,8 +34,8 @@ const Navbar = ({
 
         <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <div className="flex items-center space-x-2"> 
-            <span className="hidden md:block text-lg font-bold text-gray-900 dark:text-white">
-              NFTLend
+            <span className="hidden md:block text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-fuchsia-500">
+             {isSidebarOpen && isSidebarOpen ? "" : "NFTLend"}
             </span>
           </div>
         </div>
