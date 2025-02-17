@@ -26,7 +26,7 @@ const CreateLoanPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 relative overflow-hidden">
+    <div className="min-h-screen bg-gray-900 relative overflow-hidden">
       <div className="fixed top-0 left-0 w-full h-full overflow-hidden z-0">
         <div className="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] bg-gradient-radial from-violet-600/20 via-transparent to-transparent rounded-full blur-3xl animate-pulse-slow"></div>
         <div className="absolute bottom-[-20%] right-[-10%] w-[800px] h-[800px] bg-gradient-radial from-blue-600/20 via-transparent to-transparent rounded-full blur-3xl animate-pulse-slow delay-500"></div>
@@ -38,8 +38,8 @@ const CreateLoanPage = () => {
 
           <div className="flex items-center justify-center h-16 relative">
             <Link href='/dashboard/borrow' className="absolute left-0 flex items-center gap-2">
-              <button className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                <ArrowLeft className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+              <button className="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors">
+                <ArrowLeft className="w-5 h-5 text-gray-400" />
               </button>
               <span className="hidden md:inline text-gray-400">Back</span>
             </Link>
