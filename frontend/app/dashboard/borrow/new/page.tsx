@@ -37,7 +37,7 @@ const CreateLoanPage = () => {
           <div className="absolute -left-8 -right-8 h-px bg-gradient-to-r from-transparent via-violet-500/20 to-transparent" />
 
           <div className="flex items-center justify-center h-16 relative">
-            <Link href='/dashboard/myloans' className="absolute left-0 flex items-center gap-2">
+            <Link href='/dashboard/borrow' className="absolute left-0 flex items-center gap-2">
               <button className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
                 <ArrowLeft className="w-5 h-5 text-gray-600 dark:text-gray-400" />
               </button>
