@@ -17,7 +17,8 @@ interface Bid {
     collateral: string;
 }
 
-export const BidsReviewPage = ({ loanId = "1" }) => {
+
+export default function BidsReviewPage() {
     const [loan, setLoan] = useState({
         id: "1",
         nftName: "Bored Ape #1234",
