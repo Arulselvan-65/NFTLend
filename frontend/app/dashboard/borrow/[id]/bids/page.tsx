@@ -17,7 +17,7 @@ interface Bid {
     collateral: string;
 }
 
-const BidsReviewPage = ({ loanId = "1" }) => {
+export const BidsReviewPage = ({ loanId = "1" }) => {
     const [loan, setLoan] = useState({
         id: "1",
         nftName: "Bored Ape #1234",
@@ -157,4 +157,3 @@ const BidsReviewPage = ({ loanId = "1" }) => {
     );
 };
 
-export default BidsReviewPage;
