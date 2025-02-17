@@ -59,13 +59,11 @@ export default function LandingPage() {
 
   return (
     <div className="overflow-hidden bg-gray-900 relative min-h-screen">
-      {/* Background Animations */}
       <div className="fixed top-0 left-0 w-full h-full overflow-hidden z-0">
         <div className="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] bg-gradient-radial from-violet-600/30 via-transparent to-transparent rounded-full blur-3xl animate-pulse-slow"></div>
         <div className="absolute bottom-[-20%] right-[-10%] w-[800px] h-[800px] bg-gradient-radial from-blue-600/30 via-transparent to-transparent rounded-full blur-3xl animate-pulse-slow delay-500"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] bg-gradient-radial from-fuchsia-600/20 via-transparent to-transparent rounded-full blur-3xl animate-pulse-slow delay-1000"></div>
         
-        {/* Floating particles */}
         <div className="absolute inset-0">
           {[...Array(20)].map((_, i) => (
             <div
@@ -86,7 +84,6 @@ export default function LandingPage() {
 
       <div className="relative z-10">
         <div className="flex flex-col items-center justify-start min-h-screen px-4 md:px-8 lg:px-16 pt-8 md:pt-0">
-          {/* Logo Section */}
           <ScrollReveal className={`text-center mb-4 md:mb-8 mt-8 md:mt-16 ${isInitialLoad ? 'delay-300' : ''}`}>
             <h2 className="text-6xl md:text-8xl font-bold tracking-wider text-transparent bg-clip-text 
               bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500 px-2 animate-gradient
@@ -95,7 +92,6 @@ export default function LandingPage() {
             </h2>
           </ScrollReveal>
 
-          {/* Hero Section */}
           <ScrollReveal className={`text-center mt-8 md:mt-16 px-2 ${isInitialLoad ? 'delay-500' : ''}`}>
             <h1 className="text-4xl md:text-7xl font-extrabold mb-6 md:mb-8 leading-tight">
               <span className="text-white inline-block hover:scale-105 transition-transform duration-300">
@@ -111,7 +107,6 @@ export default function LandingPage() {
               and lightning-fast liquidity.
             </p>
             
-            {/* Buttons */}
             <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
               <button className="group relative bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white px-8 py-4 
                 rounded-full font-semibold shadow-xl hover:shadow-fuchsia-500/30 
@@ -138,7 +133,6 @@ export default function LandingPage() {
             </div>
           </ScrollReveal>
 
-          {/* Stats Section with Individual Card Animations */}
           <div className="mt-24 w-full max-w-6xl grid grid-cols-2 md:grid-cols-4 gap-8 px-4">
             {[
               { value: "$250M+", label: "Total Volume" },
@@ -163,7 +157,6 @@ export default function LandingPage() {
             ))}
           </div>
 
-          {/* Features Section with Individual Card Animations */}
           <div className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl px-4">
             {[
               {
@@ -208,7 +201,6 @@ export default function LandingPage() {
             ))}
           </div>
 
-          {/* CTA Section */}
           <ScrollReveal className={`mt-24 mb-20 text-center max-w-4xl mx-auto px-4 ${isInitialLoad ? 'delay-1300' : ''}`}>
             <h2 className="text-4xl md:text-5xl font-bold mb-8 text-transparent bg-clip-text 
               bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500

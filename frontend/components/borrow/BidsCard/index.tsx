@@ -1,22 +1,7 @@
 import React from 'react';
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-} from '@/components/ui/card';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 
-interface Bid {
-  id: string;
-  lender: string;
-  amount: string;
-  interestRate: string;
-  timestamp: Date;
-  deadline: Date;
-  nftName: string;
-  collateral: string;
-}
+import { Bid } from "@/components/types/bid";
 
 interface BidsCardProps {
   bids: Bid[];

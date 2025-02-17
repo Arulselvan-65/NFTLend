@@ -1,36 +1,13 @@
 "use client"
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { 
-  Home, 
-  FileText, 
-  History, 
-  Settings, 
-  Wallet, 
-  Package,
-  DoorOpen,
-  LogOut,
-  PanelLeftOpen,
-  PanelRightOpen
-} from 'lucide-react';
+import React from 'react';
+import { Wallet, PanelLeftOpen, PanelRightOpen } from 'lucide-react';
 
-// Types
 interface NavbarProps {
   isSidebarOpen: boolean;
   onToggleSidebar: () => void;
   walletAddress?: string;
   networkStatus?: 'connected' | 'disconnected';
 }
-
-interface SidebarProps {
-  isOpen: boolean;
-  currentPath: string;
-}
-
-interface LayoutProps {
-  children: React.ReactNode;
-}
-
 
 export const Navbar = ({
   isSidebarOpen,
@@ -56,7 +33,7 @@ export const Navbar = ({
         </div>
 
         <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <div className="flex items-center space-x-2"> 
+          <div className="flex items-center space-x-2">
             <span className="hidden md:block text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-fuchsia-500">
               {isSidebarOpen ? "" : "NFTLend"}
             </span>
@@ -65,9 +42,8 @@ export const Navbar = ({
 
         <div className="flex items-center space-x-4">
           <div className="hidden md:flex items-center px-3 py-1.5 bg-gray-100 dark:bg-gray-700 rounded-lg">
-            <div className={`w-2 h-2 rounded-full ${
-              networkStatus === 'connected' ? 'bg-green-500' : 'bg-red-500'
-            }`} />
+            <div className={`w-2 h-2 rounded-full ${networkStatus === 'connected' ? 'bg-green-500' : 'bg-red-500'
+              }`} />
             <span className="ml-2 text-sm text-gray-600 dark:text-gray-300">
               {networkStatus === 'connected' ? 'Connected' : 'Disconnected'}
             </span>
@@ -83,7 +59,7 @@ export const Navbar = ({
             </span>
           </button>
 
-        
+
         </div>
       </div>
     </nav>

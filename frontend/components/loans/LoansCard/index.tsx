@@ -1,24 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowUpRight, AlertCircle, Clock, ChevronRight } from 'lucide-react';
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-} from '@/components/ui/card';
+import { ArrowUpRight, AlertCircle, Clock } from 'lucide-react';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 
-interface Loan {
-  id: string;
-  nftName: string;
-  collateral: string;
-  amount: string;
-  interest: string;
-  duration: string;
-  remaining: string;
-  status: 'normal' | 'warning';
-}
+import { Loan } from '@/components/types/loan';
 
 interface ActiveLoansCardProps {
   activeLoans: Loan[];
@@ -39,11 +24,11 @@ export const ActiveLoansCard = ({ activeLoans }: ActiveLoansCardProps) => {
           </div>
         </div>
       </CardHeader>
-      
+
       <CardContent className="!p-0">
         <div className="space-y-4">
           {activeLoans.map((loan) => (
-            <Link 
+            <Link
               key={loan.id}
               href={`/dashboard/myloans/${loan.id}/details`}
               className="block group"
@@ -109,11 +94,10 @@ export const ActiveLoansCard = ({ activeLoans }: ActiveLoansCardProps) => {
                       ) : (
                         <Clock className="w-4 h-4 text-gray-400" />
                       )}
-                      <span className={`font-medium text-base ${
-                        loan.status === 'warning' 
-                          ? 'text-amber-500' 
+                      <span className={`font-medium text-base ${loan.status === 'warning'
+                          ? 'text-amber-500'
                           : 'text-gray-900 dark:text-white'
-                      }`}>
+                        }`}>
                         {loan.remaining}
                       </span>
                     </div>

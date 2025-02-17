@@ -1,18 +1,10 @@
 "use client"
 
 import { useState } from 'react';
-import {
-  Wallet,
-  Clock,
-  ArrowUpRight,
-  Shield,
-  AlertCircle,
-  Plus,
-} from 'lucide-react';
+import { Wallet, Clock, Shield } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { ActiveLoansCard } from "@/components/loans/LoansCard";
 
-import Link from 'next/link';
 
 export default function LoansPage() {
   const [activeLoans, setActiveLoans] = useState([
@@ -24,7 +16,7 @@ export default function LoansPage() {
       interest: "5.2%",
       duration: "30 days",
       remaining: "22 days",
-      status: "normal" as "normal"  
+      status: "normal" as "normal"
     },
     {
       id: "2",

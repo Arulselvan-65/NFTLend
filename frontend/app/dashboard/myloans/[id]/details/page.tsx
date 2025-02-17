@@ -1,19 +1,8 @@
 "use client"
 
 import { useState } from 'react';
-import {
-  Wallet,
-  Clock,
-  ArrowLeft,
-  Shield,
-  AlertCircle,
-  History,
-  Tag,
-  Percent,
-  Calendar,
-  Activity,
-} from 'lucide-react';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
+import { Wallet, Clock, ArrowLeft, History, Tag, Percent, Calendar } from 'lucide-react';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import Link from 'next/link';
 
 export default function LoanDetailsPage() {
@@ -69,7 +58,7 @@ export default function LoanDetailsPage() {
 
             <div className="flex items-center gap-2">
               <span className={`px-3 py-1.5 rounded-full text-sm font-medium 
-                ${loanDetails.status === 'active' 
+                ${loanDetails.status === 'active'
                   ? 'bg-green-500/10 text-green-400 border border-green-500/20'
                   : 'bg-orange-500/10 text-orange-400 border border-orange-500/20'
                 }`}>

@@ -1,14 +1,7 @@
 "use client"
 
 import { useState } from 'react';
-import {
-  Wallet,
-  BarChart3,
-  Activity,
-  DollarSign,
-  ShieldCheck,
-  Plus,
-} from 'lucide-react';
+import { BarChart3, Activity, DollarSign, ShieldCheck } from 'lucide-react';
 
 import StatsCard from '@/components/dashboard/stats-card';
 import ActivityChart from '@/components/dashboard/activity-chart';

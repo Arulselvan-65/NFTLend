@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 import Link from 'next/link';
-import { Home, Wallet, ArrowUpFromLine, Settings,ArrowDownToLine } from 'lucide-react';
+import { Home, Wallet, ArrowUpFromLine, Settings, ArrowDownToLine } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
 interface SidebarProps {
@@ -95,8 +95,8 @@ export const Sidebar = ({ isOpen, onClose, walletAddress = '0x1234...5678' }: Si
                   <div
                     className={`
                       p-2 rounded-lg transition-all duration-200
-                      ${isActive 
-                        ? 'bg-gradient-to-r from-violet-500 to-fuchsia-500 shadow-lg shadow-violet-500/20' 
+                      ${isActive
+                        ? 'bg-gradient-to-r from-violet-500 to-fuchsia-500 shadow-lg shadow-violet-500/20'
                         : 'bg-gray-800/80 group-hover:bg-gray-700/80'
                       }
                     `}
@@ -111,8 +111,8 @@ export const Sidebar = ({ isOpen, onClose, walletAddress = '0x1234...5678' }: Si
                   <span
                     className={`
                       font-medium transition-colors duration-200
-                      ${isActive 
-                        ? 'text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-fuchsia-500' 
+                      ${isActive
+                        ? 'text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-fuchsia-500'
                         : 'text-gray-400 group-hover:text-gray-300'
                       }
                     `}

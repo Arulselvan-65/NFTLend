@@ -66,7 +66,6 @@ export default function BidsReviewPage() {
 
     return (
         <div className="container mx-auto">
-            {/* Header Section */}
             <div className="relative mb-8">
                 <div className="absolute -left-4 sm:-left-8 -right-4 sm:-right-8 h-px bg-gradient-to-r from-transparent via-violet-500/20 to-transparent" />
 
@@ -102,7 +101,6 @@ export default function BidsReviewPage() {
                 </div>
             </div>
 
-            {/* Stats Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
                 <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30">
                     <CardContent className="!p-4">
@@ -149,7 +147,6 @@ export default function BidsReviewPage() {
                 </Card>
             </div>
 
-            {/* Bids Card */}
             <BidsCard
                 bids={bids}
                 onAcceptBid={handleAcceptBid}
