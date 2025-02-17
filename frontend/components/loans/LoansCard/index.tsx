@@ -27,7 +27,7 @@ interface ActiveLoansCardProps {
 export const ActiveLoansCard = ({ activeLoans }: ActiveLoansCardProps) => {
   return (
     <Card className="bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800">
-      <CardHeader className="border-b border-gray-100 dark:border-gray-800">
+      <CardHeader className="border-b border-gray-100 dark:border-gray-800 !p-2">
         <div className="flex items-center justify-between">
           <div>
             <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">

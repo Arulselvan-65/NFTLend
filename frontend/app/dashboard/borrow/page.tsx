@@ -1,135 +1,190 @@
 "use client"
 
 import { useState } from 'react';
-import { ArrowLeft, Wallet, Clock, TrendingUp } from 'lucide-react';
+import {
+  Wallet,
+  Clock,
+  Shield,
+  Plus,
+} from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import { BidsCard } from '@/components/borrow/BidsCard';
 import Link from 'next/link';
 
-const BidsReviewPage = ({ loanId = "1" }) => {
-  const [loan, setLoan] = useState({
-    id: "1",
-    nftName: "Bored Ape #1234",
-    collateral: "BAYC",
-    requestedAmount: "45.5 ETH",
-    status: "bidding",
-  });
-
-  const [bids, setBids] = useState([
+export default function BorrowPage() {
+  const [borrowRequests, setBorrowRequests] = useState([
     {
       id: "1",
-      lender: "0x1234...5678",
-      bidAmount: "43.2 ETH",
-      interestRate: "5.2%",
-      timestamp: new Date(Date.now() - 3600000),
-      deadline: new Date(Date.now() + 24 * 60 * 60 * 1000)
+      nftName: "Bored Ape #1234",
+      collateral: "BAYC",
+      requestedAmount: "45.5 ETH",
+      bestOffer: "43.2 ETH",
+      interest: "5.2%",
+      totalBids: 3,
+      status: "pending" as "pending"
     },
     {
       id: "2",
-      lender: "0x8765...4321",
-      bidAmount: "42.8 ETH",
-      interestRate: "4.8%",
-      timestamp: new Date(Date.now() - 7200000),
-      deadline: new Date(Date.now() + 24 * 60 * 60 * 1000)
-    },
-    {
-      id: "3",
-      lender: "0x9876...2468",
-      bidAmount: "44.0 ETH",
-      interestRate: "5.5%",
-      timestamp: new Date(Date.now() - 1800000),
-      deadline: new Date(Date.now() + 24 * 60 * 60 * 1000)
+      nftName: "Azuki #4567",
+      collateral: "AZUKI",
+      requestedAmount: "30 ETH",
+      bestOffer: "28.5 ETH",
+      interest: "4.8%",
+      totalBids: 2,
+      status: "pending" as "pending"
     }
   ]);
 
-  const handleAcceptBid = (bidId: any) => {
-    // Implement bid acceptance logic
-    console.log('Accepting bid:', bidId);
-  };
-
   return (
-    <div className="container mx-auto p-4 sm:p-6">
-      {/* Header Section */}
-      <div className="relative mb-8">
-        <div className="absolute -left-8 -right-8 h-px bg-gradient-to-r from-transparent via-violet-500/20 to-transparent" />
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center gap-4">
-            <Link href="/dashboard/borrow">
-              <button className="p-2 rounded-xl bg-gray-800/40 hover:bg-gray-800/60 transition-colors">
-                <ArrowLeft className="w-5 h-5 text-gray-400" />
-              </button>
-            </Link>
-            <div className="flex items-center gap-3">
-              <div className="h-10 w-10 rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500 flex items-center justify-center">
-                <span className="text-white font-bold">{loan.collateral[0]}</span>
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 relative overflow-hidden">
+      <div className="fixed top-0 left-0 w-full h-full overflow-hidden z-0">
+        <div className="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] bg-gradient-radial from-violet-600/20 via-transparent to-transparent rounded-full blur-3xl animate-pulse-slow"></div>
+        <div className="absolute bottom-[-20%] right-[-10%] w-[800px] h-[800px] bg-gradient-radial from-blue-600/20 via-transparent to-transparent rounded-full blur-3xl animate-pulse-slow delay-500"></div>
+      </div>
+
+      <div className="relative z-10">
+        <div className="flex justify-between items-center mb-6">
+          <span className="px-3 py-1.5 text-sm font-medium text-violet-400 bg-violet-500/10 rounded-full border border-violet-500/20">
+            {borrowRequests.length} Active Requests
+          </span>
+          <Link href="/dashboard/borrow/new">
+            <button className="px-4 py-2 rounded-xl bg-gray-800/50 backdrop-blur-xl border border-violet-500/20 text-violet-400 font-medium transition-all duration-300 hover:bg-violet-500/20 hover:border-violet-500/30 hover:text-violet-300">
+              <span className="flex items-center gap-2">
+                <Plus className="w-4 h-4" />
+                <span>Create Request</span>
+              </span>
+            </button>
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300">
+            <CardContent className="p-4 pt-6 flex">
+              <div className="flex items-center gap-4">
+                <div className="p-3 rounded-xl bg-violet-500/10 border border-violet-500/20">
+                  <Wallet className="w-6 h-6 text-violet-500" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-400">Total Requested</p>
+                  <p className="text-xl font-bold text-white mt-1">75.5 ETH</p>
+                </div>
               </div>
-              <div>
-                <h1 className="text-xl font-bold text-white">{loan.nftName}</h1>
-                <p className="text-sm text-gray-400">Review loan offers</p>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300">
+            <CardContent className="p-4 pt-6 flex">
+              <div className="flex items-center gap-4">
+                <div className="p-3 rounded-xl bg-fuchsia-500/10 border border-fuchsia-500/20">
+                  <Clock className="w-6 h-6 text-fuchsia-500" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-400">Active Requests</p>
+                  <p className="text-xl font-bold text-white mt-1">{borrowRequests.length}</p>
+                </div>
               </div>
-            </div>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300">
+            <CardContent className="p-4 pt-6 flex">
+              <div className="flex items-center gap-4">
+                <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20">
+                  <Shield className="w-6 h-6 text-blue-500" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-400">Total Bids</p>
+                  <p className="text-xl font-bold text-white mt-1">5</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="max-w-screen-xl mx-auto">
+          {/* Desktop view */}
+          <div className="hidden md:block overflow-hidden">
+            <table className="w-full">
+              <thead>
+                <tr className="border-b border-gray-800">
+                  <th className="py-4 px-6 text-left text-sm font-medium text-gray-400">NFT</th>
+                  <th className="py-4 px-6 text-left text-sm font-medium text-gray-400">Requested Amount</th>
+                  <th className="py-4 px-6 text-center text-sm font-medium text-gray-400">Total Bids</th>
+                  <th className="py-4 px-6 text-right text-sm font-medium text-gray-400">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {borrowRequests.map((request) => (
+                  <tr 
+                    key={request.id} 
+                    className="border-b border-gray-800/50 hover:bg-gray-800/30 transition-colors"
+                  >
+                    <td className="py-4 px-6">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-violet-500/10 rounded-xl flex items-center justify-center text-violet-500 font-medium">
+                          NFT
+                        </div>
+                        <span className="font-medium text-white">{request.nftName}</span>
+                      </div>
+                    </td>
+                    <td className="py-4 px-6">
+                      <span className="text-white font-medium">{request.requestedAmount}</span>
+                    </td>
+                    <td className="py-4 px-6">
+                      <div className="flex justify-center">
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-sm font-medium bg-violet-500/10 text-white">
+                          {request.totalBids} bids
+                        </span>
+                      </div>
+                    </td>
+                    <td className="py-4 px-6 text-right">
+                      <Link href={`/dashboard/borrow/${request.id}/bids`}>
+                        <button className="inline-flex items-center px-3 py-1.5 rounded-lg bg-violet-500/10 text-violet-400 text-sm font-medium transition-all duration-300 hover:bg-violet-500/20">
+                          Review Bids
+                        </button>
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
 
-          <span className="px-3 py-1.5 rounded-full text-sm font-medium bg-violet-500/10 text-violet-400 border border-violet-500/20">
-            Bidding ends in 24h
-          </span>
+          {/* Mobile view */}
+          <div className="md:hidden space-y-4">
+            {borrowRequests.map((request) => (
+              <div 
+                key={request.id}
+                className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/50 rounded-xl p-4 space-y-4"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-violet-500/10 rounded-xl flex items-center justify-center text-violet-500 font-medium">
+                      NFT
+                    </div>
+                    <span className="font-medium text-white">{request.nftName}</span>
+                  </div>
+                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-sm font-medium bg-violet-500/10 text-white">
+                    {request.totalBids} bids
+                  </span>
+                </div>
+                
+                <div className="flex items-center justify-between pt-2 border-t border-gray-700/50">
+                  <div>
+                    <span className="text-sm text-gray-400">Requested Amount</span>
+                    <p className="text-white font-medium mt-1">{request.requestedAmount}</p>
+                  </div>
+                  <Link href={`/dashboard/borrow/${request.id}/bids`}>
+                    <button className="inline-flex items-center px-3 py-1.5 rounded-lg bg-violet-500/10 text-violet-400 text-sm font-medium transition-all duration-300 hover:bg-violet-500/20">
+                      Review Bids
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
         </div>
       </div>
 
-      {/* Stats Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-        <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30">
-          <CardContent className="!p-4">
-            <div className="flex items-center gap-4">
-              <div className="p-3 rounded-xl bg-violet-500/10 border border-violet-500/20">
-                <Wallet className="w-6 h-6 text-violet-500" />
-              </div>
-              <div>
-                <p className="text-sm text-gray-400">Requested Amount</p>
-                <p className="text-xl font-bold text-white">{loan.requestedAmount}</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30">
-          <CardContent className="!p-4">
-            <div className="flex items-center gap-4">
-              <div className="p-3 rounded-xl bg-fuchsia-500/10 border border-fuchsia-500/20">
-                <Clock className="w-6 h-6 text-fuchsia-500" />
-              </div>
-              <div>
-                <p className="text-sm text-gray-400">Total Offers</p>
-                <p className="text-xl font-bold text-white">{bids.length}</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 sm:col-span-2 lg:col-span-1">
-          <CardContent className="!p-4">
-            <div className="flex items-center gap-4">
-              <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20">
-                <TrendingUp className="w-6 h-6 text-blue-500" />
-              </div>
-              <div>
-                <p className="text-sm text-gray-400">Best Rate</p>
-                <p className="text-xl font-bold text-white">
-                  {Math.min(...bids.map(bid => parseFloat(bid.interestRate)))}%
-                </p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Bids Card */}
-      <BidsCard
-        bids={bids}
-        onAcceptBid={handleAcceptBid}
-      />
-    </div>
   );
-};
-
-export default BidsReviewPage;
+}

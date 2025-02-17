@@ -47,8 +47,6 @@ const CreateLoanPage = () => {
               New Loan Request
             </span>
           </div>
-
-
         </div>
 
         <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300 max-w-2xl mx-auto shadow-xl">
@@ -113,13 +111,15 @@ const CreateLoanPage = () => {
               </div>
 
               <div className="pt-4">
-              <button
-                type="submit"
-                className="w-full px-4 py-3 rounded-xl bg-violet-500 text-white font-medium transition-all duration-200 
-                hover:bg-violet-600 hover:shadow-md"
-              >
-                Create Loan Request
-              </button>
+                <button
+                  type="submit"
+                  className="w-full px-4 py-3 rounded-xl bg-violet-500/20 backdrop-blur-sm border border-violet-500/30 
+                  text-violet-300 font-medium transition-all duration-300 
+                  hover:bg-violet-500/30 hover:border-violet-400/50 hover:text-violet-200 
+                  focus:ring-2 focus:ring-violet-500/20 focus:ring-offset-2 focus:ring-offset-gray-900"
+                >
+                  Create Loan Request
+                </button>
               </div>
             </form>
           </CardContent>
