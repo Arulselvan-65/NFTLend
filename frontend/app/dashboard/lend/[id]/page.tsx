@@ -58,11 +58,11 @@ export default function BidPlacementPage() {
         <div className="min-h-screen">
             <div className="max-w-6xl mx-auto px-4 py-6">
                 <div className="mb-6">
-                    <Link href="/dashboard/borrow" className="inline-flex items-center gap-2 hover:opacity-80">
+                    <Link href="/dashboard/lend" className="inline-flex items-center gap-2 hover:opacity-80">
                         <button className="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors">
                             <ArrowLeft className="w-5 h-5 text-gray-400" />
                         </button>
-                        <span className="hidden md:inline text-gray-400">Back</span>
+                        <span className="text-gray-400">Back</span>
                     </Link>
                 </div>
 

@@ -37,7 +37,7 @@ export default function LendPage() {
       </div>
 
       <div className="relative z-10">
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex justify-center items-center mb-6">
           <span className="px-3 py-1.5 text-sm font-medium text-violet-400 bg-violet-500/10 rounded-full border border-violet-500/20">
             {lendingOpportunities.length} Available Opportunities
           </span>
@@ -150,7 +150,7 @@ export default function LendPage() {
                 key={opportunity.id} 
                 href={`/dashboard/lend/${opportunity.id}`}
               >
-                <div className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/50 rounded-xl p-4 space-y-4 hover:border-violet-500/30 transition-all duration-300">
+                <div className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/50 rounded-xl p-4 space-y-4 hover:border-violet-500/30 transition-all duration-300 mt-5">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 bg-violet-500/10 rounded-xl flex items-center justify-center text-violet-500 font-medium">
