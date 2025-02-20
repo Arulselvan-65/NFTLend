@@ -33,7 +33,7 @@ export const ActiveLoansCard = ({ activeLoans }: ActiveLoansCardProps) => {
               href={`/dashboard/myloans/${loan.id}/details`}
               className="block group"
             >
-              <div className="p-4 rounded-lg md:border-none border border-gray-700 bg-gray-800/50 hover:border-gray-600 transition-all duration-200 relative hover:shadow-sm">
+              <div className="p-4 rounded-lg md:border-none border border-gray-800 bg-gray-800/30 hover:border-gray-600 transition-all duration-200 relative hover:shadow-sm">
                 <div className="absolute right-4 top-4 px-2 py-1 rounded-full text-xs font-medium bg-emerald-900/20 text-emerald-400 border border-emerald-800">
                   Active Loan
                 </div>

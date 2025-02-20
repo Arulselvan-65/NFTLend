@@ -19,7 +19,8 @@ export default function BidPlacementPage() {
         timeLeft: "2 days",
         borrower: "0x1234...5678",
         floorPrice: "80 ETH",
-        status: "active"
+        status: "active",
+        image: "https://bafybeifpccidwt2cvcm6etjaivuhbwkk66ws2zhm4tj4a73vm5wm2bmu2i.ipfs.dweb.link/"
     };
 
     useEffect(() => {
@@ -28,7 +29,7 @@ export default function BidPlacementPage() {
         }
     }, [bidAmount]);
 
-    const handleSubmit = async (e: any) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (parseFloat(bidAmount) <= 0) {
             toast.error('Please enter a valid bid amount');
@@ -55,120 +56,137 @@ export default function BidPlacementPage() {
     };
 
     return (
-        <div className="min-h-screen">
-            <div className="max-w-6xl mx-auto px-4 py-6">
-                <div className="mb-6">
-                    <Link href="/dashboard/lend" className="inline-flex items-center gap-2 hover:opacity-80">
-                        <button className="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors">
-                            <ArrowLeft className="w-5 h-5 text-gray-400" />
-                        </button>
-                        <span className="text-gray-400">Back</span>
-                    </Link>
-                </div>
+        <div className="min-h-screen bg-gray-900 flex flex-col">
+            {/* Header */}
+            <div className="flex items-center justify-center h-16 relative">
+            <Link href='/dashboard/borrow' className="absolute left-0 flex items-center gap-2">
+              <button className="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors">
+                <ArrowLeft className="w-5 h-5 text-gray-400" />
+              </button>
+              <span className="hidden md:inline text-gray-400">Back</span>
+            </Link> 
+          </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="bg-gray-800/50 rounded-xl border border-gray-700 p-6">
-                        <div className="flex items-center gap-3 mb-6">
-                            <div className="w-10 h-10 bg-violet-500/10 rounded-xl flex items-center justify-center text-violet-500 font-medium">
-                                NFT
-                            </div>
-                            <h2 className="text-xl font-bold text-white">{requestDetails.nftName}</h2>
+            {/* Main Content */}
+                <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    {/* Left Side - NFT Image */}
+                    <div className="bg-gray-800/50 rounded-xl overflow-hidden flex flex-col">
+                        <div className="relative aspect-square">
+                            <img 
+                                src={requestDetails.image} 
+                                alt={requestDetails.nftName} 
+                                className="w-full h-full object-cover"
+                            />
                         </div>
-
-                        <div className="grid grid-cols-2 gap-x-12 gap-y-6">
-                            <div>
-                                <p className="text-sm text-gray-400 flex items-center gap-2 mb-2">
-                                    <TrendingUp className="w-4 h-4" />
-                                    Floor Price
-                                </p>
-                                <p className="text-lg font-medium text-white">{requestDetails.floorPrice}</p>
-                            </div>
-                            <div>
-                                <p className="text-sm text-gray-400 flex items-center gap-2 mb-2">
-                                    <Wallet className="w-4 h-4" />
-                                    Requested Amount
-                                </p>
-                                <p className="text-lg font-medium text-white">{requestDetails.requestedAmount} ETH</p>
-                            </div>
-                            <div>
-                                <p className="text-sm text-gray-400 flex items-center gap-2 mb-2">
-                                    <Clock className="w-4 h-4" />
-                                    Time Left
-                                </p>
-                                <p className="text-lg font-medium text-white">{requestDetails.timeLeft}</p>
-                            </div>
-                            <div>
-                                <p className="text-sm text-gray-400 flex items-center gap-2 mb-2">
-                                    <TrendingUp className="w-4 h-4" />
-                                    Min Interest Rate
-                                </p>
-                                <p className="text-lg font-medium text-white">{requestDetails.minInterest}%</p>
-                            </div>
-                            <div className="col-span-2">
-                                <p className="text-sm text-gray-400 flex items-center gap-2 mb-2">
-                                    <User className="w-4 h-4" />
-                                    Borrower
-                                </p>
-                                <p className="text-lg font-mono text-white bg-gray-900/50 px-3 py-1.5 rounded-lg">{requestDetails.borrower}</p>
-                            </div>
+                        <div className="p-4">
+                            <h1 className="text-xl font-semibold text-white">{requestDetails.nftName}</h1>
+                            <p className="text-sm text-gray-400 mt-1">{requestDetails.collateral}</p>
                         </div>
                     </div>
 
-                    <div className="bg-gray-800/50 rounded-xl border border-gray-700 p-6">
-                        <h2 className="text-xl font-bold text-white mb-6">Place Your Bid</h2>
-                        <form onSubmit={handleSubmit} className="space-y-6">
-                            <div>
-                                <label className="block text-sm text-gray-400 mb-2">
-                                    Bid Amount
-                                </label>
-                                <div className="relative">
-                                    <input
-                                        type="string"
-                                        value={bidAmount}
-                                        onChange={(e) => setBidAmount(e.target.value)}
-                                        placeholder="0.00"
-                                        required
-                                        className="w-full h-12 px-4 bg-gray-900/75 border border-gray-700 rounded-lg 
-                                                 focus:outline-none focus:ring-1 focus:ring-violet-500 focus:border-violet-500 
-                                                 text-white placeholder-gray-500 text-lg"
-                                    />
-                                    <span className="absolute right-4 top-3.5 text-gray-500">ETH</span>
+                    {/* Right Side - Details and Form */}
+                    <div className="flex flex-col gap-6">
+                        {/* NFT Details */}
+                        <div className="bg-gray-800/50 rounded-xl p-6 flex-1">
+                            <div className="flex items-center justify-between mb-4">
+                                <h2 className="text-lg font-semibold text-white">Loan Details</h2>
+                                <div className="bg-violet-500/10 px-3 py-1 rounded-lg">
+                                    <p className="text-violet-400 capitalize text-sm">{requestDetails.status}</p>
                                 </div>
                             </div>
 
-                            <div>
-                                <label className="block text-sm text-gray-400 mb-2">
-                                    Interest Rate
-                                </label>
-                                <div className="relative">
-                                    <input
-                                        type="string"
-                                        value={interestRate}
-                                        onChange={(e) => setInterestRate(e.target.value)}
-                                        placeholder="0.00"
-                                        required
-                                        className="w-full h-12 px-4 bg-gray-900/75 border border-gray-700 rounded-lg 
-                                                 focus:outline-none focus:ring-1 focus:ring-violet-500 focus:border-violet-500 
-                                                 text-white placeholder-gray-500 text-lg"
-                                    />
-                                    <span className="absolute right-4 top-3.5 text-gray-500">%</span>
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="bg-gray-900/50 p-4 rounded-lg">
+                                    <p className="text-sm text-gray-400 flex items-center gap-2">
+                                        <TrendingUp className="w-4 h-4" />
+                                        Floor Price
+                                    </p>
+                                    <p className="text-white mt-2 font-medium">{requestDetails.floorPrice}</p>
                                 </div>
-                                <p className="text-sm text-gray-400 mt-2">
-                                    Minimum rate: {requestDetails.minInterest}%
-                                </p>
+                                <div className="bg-gray-900/50 p-4 rounded-lg">
+                                    <p className="text-sm text-gray-400 flex items-center gap-2">
+                                        <Wallet className="w-4 h-4" />
+                                        Requested
+                                    </p>
+                                    <p className="text-white mt-2 font-medium">{requestDetails.requestedAmount} ETH</p>
+                                </div>
+                                <div className="bg-gray-900/50 p-4 rounded-lg">
+                                    <p className="text-sm text-gray-400 flex items-center gap-2">
+                                        <Clock className="w-4 h-4" />
+                                        Time Left
+                                    </p>
+                                    <p className="text-white mt-2 font-medium">{requestDetails.timeLeft}</p>
+                                </div>
+                                <div className="bg-gray-900/50 p-4 rounded-lg">
+                                    <p className="text-sm text-gray-400 flex items-center gap-2">
+                                        <User className="w-4 h-4" />
+                                        Borrower
+                                    </p>
+                                    <p className="text-white mt-2 font-mono text-sm">{requestDetails.borrower}</p>
+                                </div>
                             </div>
+                        </div>
 
-                            <button
-                                type="submit"
-                                disabled={loading}
-                                className="w-full h-14 rounded-xl bg-violet-500/10 text-violet-400 font-medium text-center flex items-center justify-center hover:bg-violet-500/20 transition-all duration-300"
-                            >
-                                {loading ? 'Placing Bid...' : 'Place Bid'}
-                            </button>
-                        </form>
+                        {/* Bid Form */}
+                        <div className="bg-gray-800/50 rounded-xl p-6">
+                            <h2 className="text-lg font-semibold text-white mb-4">Place Your Bid</h2>
+                            <form onSubmit={handleSubmit} className="space-y-5">
+                                <div>
+                                    <label className="block text-sm text-gray-400 mb-2">
+                                        Bid Amount (ETH)
+                                    </label>
+                                    <div className="relative">
+                                        <input
+                                            type="number"
+                                            step="0.01"
+                                            value={bidAmount}
+                                            onChange={(e) => setBidAmount(e.target.value)}
+                                            placeholder="0.00"
+                                            required
+                                            className="w-full h-12 px-4 bg-gray-900/75 rounded-lg 
+                                                    focus:outline-none focus:ring-2 focus:ring-violet-500
+                                                    text-white placeholder-gray-500"
+                                        />
+                                        <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">ETH</span>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm text-gray-400 mb-2">
+                                        Interest Rate (%)
+                                    </label>
+                                    <div className="relative">
+                                        <input
+                                            type="number"
+                                            step="0.1"
+                                            value={interestRate}
+                                            onChange={(e) => setInterestRate(e.target.value)}
+                                            placeholder="0.00"
+                                            required
+                                            className="w-full h-12 px-4 bg-gray-900/75 rounded-lg 
+                                                    focus:outline-none focus:ring-2 focus:ring-violet-500
+                                                    text-white placeholder-gray-500"
+                                        />
+                                        <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">%</span>
+                                    </div>
+                                    <p className="text-xs text-gray-400 mt-2">
+                                        Minimum rate: {requestDetails.minInterest}%
+                                    </p>
+                                </div>
+
+                                <button
+                                    type="submit"
+                                    disabled={loading}
+                                    className="w-full h-12 rounded-lg bg-violet-600 text-white
+                                            hover:bg-violet-700 transition-colors disabled:opacity-50
+                                            font-medium"
+                                >
+                                    {loading ? 'Placing Bid...' : 'Place Bid'}
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
         </div>
     );
 }
