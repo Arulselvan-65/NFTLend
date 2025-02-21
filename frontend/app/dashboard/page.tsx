@@ -88,7 +88,7 @@ export default function DashboardPage() {
             </CardContent>
           </Card>
 
-          <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300">
+          <Card className="bg-gray-900/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300">
             <CardHeader>
               <CardTitle>
                 Recent Activity

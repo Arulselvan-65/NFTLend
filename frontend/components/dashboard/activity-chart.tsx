@@ -60,7 +60,7 @@ const ActivityChart = ({ data, title, description, className }: ActivityChartPro
       className="w-full"
     >
       <Card className={className}>
-        <CardHeader className="space-y-1 md:space-y-2">
+        <CardHeader className="space-y-1 md:space-y-2 !p-4">
           {title && (
             <CardTitle className="text-lg md:text-xl text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-fuchsia-500">
               {title}
@@ -72,7 +72,8 @@ const ActivityChart = ({ data, title, description, className }: ActivityChartPro
             </CardDescription>
           )}
         </CardHeader>
-        <CardContent>
+
+        <CardContent className='!pb-0 md:!pb-4'>
           <div className="h-[200px] md:h-[300px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart 
@@ -94,7 +95,7 @@ const ActivityChart = ({ data, title, description, className }: ActivityChartPro
                 <CartesianGrid 
                   strokeDasharray="3 3" 
                   strokeOpacity={0.1}
-                  horizontal={!isMobile}
+                  horizontal={true}
                   vertical={false}
                 />
                 <XAxis 
@@ -106,6 +107,7 @@ const ActivityChart = ({ data, title, description, className }: ActivityChartPro
                   textAnchor={isMobile ? "end" : "middle"}
                   height={isMobile ? 40 : 30}
                   tick={{ fontSize: isMobile ? 10 : 12 }}
+                  axisLine={{ stroke: '#6B7280', strokeOpacity: 0.2 }}
                 />
                 <YAxis 
                   stroke="#6B7280" 
@@ -113,6 +115,7 @@ const ActivityChart = ({ data, title, description, className }: ActivityChartPro
                   tickMargin={isMobile ? 5 : 10}
                   width={isMobile ? 30 : 40}
                   tickCount={isMobile ? 5 : 7}
+                  axisLine={{ stroke: '#6B7280', strokeOpacity: 0.2 }}
                 />
                 <Tooltip 
                   contentStyle={{

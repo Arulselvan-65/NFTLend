@@ -5,7 +5,7 @@ import React, { ReactNode } from 'react';
 
 const Card = ({ children, className = '' }: { children: ReactNode, className?: string }) => {
     return (
-        <div className={`bg-gray-800 rounded-lg shadow-md ${className}`}>
+        <div className={`bg-gray-800/30 rounded-lg shadow-md ${className}`}>
             {children}
         </div>
     );
