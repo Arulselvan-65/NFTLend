@@ -37,13 +37,7 @@ export default function LendPage() {
       </div>
 
       <div className="relative z-10">
-        <div className="flex justify-center items-center mb-6">
-          <span className="px-3 py-1.5 text-sm font-medium text-violet-400 bg-violet-500/10 rounded-full border border-violet-500/20">
-            {lendingOpportunities.length} Available Opportunities
-          </span>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 mt-3">
           <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300">
             <CardContent className="p-4 pt-6 flex">
               <div className="flex items-center gap-4">

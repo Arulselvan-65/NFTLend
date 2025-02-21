@@ -26,14 +26,14 @@ const CreateLoanPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 relative overflow-hidden">
+    <div className="bg-gray-900 relative overflow-hidden">
       <div className="fixed top-0 left-0 w-full h-full overflow-hidden z-0">
         <div className="absolute top-[-10%] left-[-10%] w-[800px] h-[800px] bg-gradient-radial from-violet-600/20 via-transparent to-transparent rounded-full blur-3xl animate-pulse-slow"></div>
         <div className="absolute bottom-[-20%] right-[-10%] w-[800px] h-[800px] bg-gradient-radial from-blue-600/20 via-transparent to-transparent rounded-full blur-3xl animate-pulse-slow delay-500"></div>
       </div>
 
       <div className="relative z-10">
-        <div className="relative mb-8">
+        <div className="relative mb-4">
           <div className="absolute -left-8 -right-8 h-px bg-gradient-to-r from-transparent via-violet-500/20 to-transparent" />
 
           <div className="flex items-center justify-center h-16 relative">
@@ -49,7 +49,7 @@ const CreateLoanPage = () => {
           </div>
         </div>
 
-        <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300 max-w-2xl mx-auto shadow-xl">
+        <Card className="my-10 bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300 max-w-2xl mx-auto shadow-xl">
           <CardHeader>
             <CardTitle className="text-xl">Create New Loan</CardTitle>
             <CardDescription>Enter the details for your NFT-backed loan request</CardDescription>
