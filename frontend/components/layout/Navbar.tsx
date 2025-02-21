@@ -1,23 +1,21 @@
 "use client"
 import React from 'react';
-import { Wallet, PanelLeftOpen, PanelRightOpen } from 'lucide-react';
+import { ConnectButtonC } from '../ConnectButton';
+import { PanelLeftOpen, PanelRightOpen } from 'lucide-react';
 
 interface NavbarProps {
   isSidebarOpen: boolean;
   onToggleSidebar: () => void;
-  walletAddress?: string;
-  networkStatus?: 'connected' | 'disconnected';
 }
 
 export const Navbar = ({
   isSidebarOpen,
   onToggleSidebar,
-  walletAddress = '',
-  networkStatus = 'disconnected'
 }: NavbarProps) => {
   return (
     <nav className="fixed top-0 left-0 right-0 h-16 bg-gray-800 border-b border-gray-700 z-50">
       <div className="h-full px-4 flex items-center justify-between">
+        {/* Left section - Sidebar toggle */}
         <div className="flex items-center">
           <button
             onClick={onToggleSidebar}
@@ -32,6 +30,7 @@ export const Navbar = ({
           </button>
         </div>
 
+        {/* Center section - Logo */}
         <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <div className="flex items-center space-x-2">
             <span className="hidden md:block text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-fuchsia-500">
@@ -40,26 +39,14 @@ export const Navbar = ({
           </div>
         </div>
 
-        <div className="flex items-center space-x-4">
-          <div className="hidden md:flex items-center px-3 py-1.5 bg-gray-100 dark:bg-gray-700 rounded-lg">
-            <div className={`w-2 h-2 rounded-full ${networkStatus === 'connected' ? 'bg-green-500' : 'bg-red-500'
-              }`} />
-            <span className="ml-2 text-sm text-gray-600 dark:text-gray-300">
-              {networkStatus === 'connected' ? 'Connected' : 'Disconnected'}
-            </span>
+        {/* Right section - Connect button */}
+        <div className="flex items-center gap-2">
+          <div className="hidden sm:block">
+            <ConnectButtonC />
           </div>
-
-          <button className="flex items-center px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors duration-200">
-            <Wallet className="w-4 h-4 mr-2" />
-            <span className="text-sm">
-              {walletAddress
-                ? `${walletAddress.slice(0, 4)}...${walletAddress.slice(-4)}`
-                : 'Connect'
-              }
-            </span>
-          </button>
-
-
+          <div className="block sm:hidden">
+            <ConnectButtonC displayType="compact" />
+          </div>
         </div>
       </div>
     </nav>

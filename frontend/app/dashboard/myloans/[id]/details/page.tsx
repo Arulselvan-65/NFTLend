@@ -44,11 +44,11 @@ export default function LoanDetailsPage() {
         <div className="absolute bottom-[-20%] right-[-10%] w-[800px] h-[800px] bg-gradient-radial from-blue-600/20 via-transparent to-transparent rounded-full blur-3xl animate-pulse-slow delay-500"></div>
       </div>
 
-      <div className="relative z-10">
-        <div className="relative mb-8">
-          <div className="absolute -left-8 -right-8 h-px bg-gradient-to-r from-transparent via-violet-500/20 to-transparent" />
+      <div className="relative z-10 mx-auto">
+        <div className="relative mb-6 sm:mb-8">
+          <div className="absolute -left-4 sm:-left-8 -right-4 sm:-right-8 h-px bg-gradient-to-r from-transparent via-violet-500/20 to-transparent" />
 
-          <div className="flex items-center justify-between h-16">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-0 h-auto sm:h-16">
             <div className="flex items-center gap-4">
               <Link href='/dashboard/myloans'>
                 <button className="p-2 rounded-xl bg-gray-800/40 hover:bg-gray-800/60 transition-colors">
@@ -60,134 +60,116 @@ export default function LoanDetailsPage() {
                   <span className="text-white font-bold">{loanDetails.collateral[0]}</span>
                 </div>
                 <div>
-                  <h1 className="text-xl font-bold text-white">{loanDetails.nftName}</h1>
-                  <p className="text-sm text-gray-400">Loan #{loanDetails.id}</p>
+                  <h1 className="text-lg sm:text-xl font-bold text-white">{loanDetails.nftName}</h1>
+                  <p className="text-xs sm:text-sm text-gray-400">Loan #{loanDetails.id}</p>
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center gap-4">
-              <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-                <DialogTrigger asChild>
-                  <button className="px-6 py-3 rounded-2xl bg-emerald-500 text-white font-medium text-base flex items-center justify-center gap-2 transition-all duration-300 hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-500/20">
-                    <Wallet className="w-5 h-5" />
-                    <span>Repay Loan</span>
-                  </button>
-                </DialogTrigger>
-                <DialogContent className="bg-gray-800 border-gray-700 text-white">
-                  <DialogHeader>
-                    <DialogTitle>Make a Payment</DialogTitle>
-                  </DialogHeader>
-                  <div className="py-4">
-                    <div className="space-y-4">
-                      <div className="space-y-2">
-                        <label className="text-sm text-gray-400">Payment Amount (ETH)</label>
-                        <input
-                          type="text"
-                          step="0.001"
-                          value={paymentAmount}
-                          onChange={(e) => setPaymentAmount(e.target.value)}
-                          className="w-full px-4 py-2 rounded-xl bg-gray-700 border border-gray-600 text-white focus:outline-none "
-                          placeholder="0.00"
-                        />
-                      </div>
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <DialogTrigger asChild>
+                <button className="w-full sm:w-auto px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl bg-emerald-500 text-white font-medium text-sm sm:text-base flex items-center justify-center gap-2 transition-all duration-300 hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-500/20">
+                  <Wallet className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <span>Repay Loan</span>
+                </button>
+              </DialogTrigger>
+              <DialogContent className="bg-gray-800 border-gray-700 text-white mx-4 sm:mx-0">
+                <DialogHeader>
+                  <DialogTitle>Make a Payment</DialogTitle>
+                </DialogHeader>
+                <div className="py-4">
+                  <div className="space-y-4">
+                    <div className="space-y-2">
+                      <label className="text-sm text-gray-400">Payment Amount (ETH)</label>
+                      <input
+                        type="text"
+                        step="0.001"
+                        value={paymentAmount}
+                        onChange={(e) => setPaymentAmount(e.target.value)}
+                        className="w-full px-4 py-2 rounded-xl bg-gray-700 border border-gray-600 text-white focus:outline-none"
+                        placeholder="0.00"
+                      />
                     </div>
                   </div>
-                  <DialogFooter>
-                    <button
-                      onClick={handlePayment}
-                      className="px-6 py-2 rounded-xl bg-emerald-500 text-white font-medium hover:bg-emerald-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                      disabled={!paymentAmount}
-                    >
-                      Confirm Payment
-                    </button>
-                  </DialogFooter>
-                </DialogContent>
-              </Dialog>
-            </div>
+                </div>
+                <DialogFooter>
+                  <button
+                    onClick={handlePayment}
+                    className="w-full sm:w-auto px-6 py-2 rounded-xl bg-emerald-500 text-white font-medium hover:bg-emerald-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    disabled={!paymentAmount}
+                  >
+                    Confirm Payment
+                  </button>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
           <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 transition-all duration-300 order-1 lg:col-span-2">
-            <CardHeader>
-              <CardTitle>Loan Overview</CardTitle>
+            <CardHeader className="p-4 sm:p-6">
+              <CardTitle className="text-lg sm:text-xl">Loan Overview</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-4 sm:p-6">
               <div className="space-y-4">
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-gray-400">
                     <Tag className="w-4 h-4" />
-                    <span className="text-sm">Lender Address</span>
+                    <span className="text-xs sm:text-sm">Lender Address</span>
                   </div>
-                  <p className="text-lg font-medium text-white break-words">{loanDetails.lenderAddress}</p>
+                  <p className="text-sm sm:text-lg font-medium text-white break-words">{loanDetails.lenderAddress}</p>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2 text-gray-400">
-                      <Wallet className="w-4 h-4" />
-                      <span className="text-sm">Borrowed</span>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+                  {[
+                    { icon: <Wallet className="w-4 h-4" />, label: "Borrowed", value: loanDetails.amount },
+                    { icon: <Percent className="w-4 h-4" />, label: "Interest Rate", value: loanDetails.interest },
+                    { icon: <Calendar className="w-4 h-4" />, label: "Duration", value: loanDetails.duration },
+                    { icon: <Clock className="w-4 h-4" />, label: "Remaining", value: loanDetails.remaining }
+                  ].map((item, index) => (
+                    <div key={index} className="space-y-2">
+                      <div className="flex items-center gap-2 text-gray-400">
+                        {item.icon}
+                        <span className="text-xs sm:text-sm">{item.label}</span>
+                      </div>
+                      <p className="text-sm sm:text-lg font-medium text-white">{item.value}</p>
                     </div>
-                    <p className="text-lg font-medium text-white">{loanDetails.amount}</p>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2 text-gray-400">
-                      <Percent className="w-4 h-4" />
-                      <span className="text-sm">Interest Rate</span>
-                    </div>
-                    <p className="text-lg font-medium text-white">{loanDetails.interest}</p>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2 text-gray-400">
-                      <Calendar className="w-4 h-4" />
-                      <span className="text-sm">Duration</span>
-                    </div>
-                    <p className="text-lg font-medium text-white">{loanDetails.duration}</p>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2 text-gray-400">
-                      <Clock className="w-4 h-4" />
-                      <span className="text-sm">Remaining</span>
-                    </div>
-                    <p className="text-lg font-medium text-white">{loanDetails.remaining}</p>
-                  </div>
+                  ))}
                 </div>
               </div>
             </CardContent>
           </Card>
 
           <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 transition-all duration-300 order-2">
-            <CardHeader>
-              <CardTitle>Collateral Information</CardTitle>
+            <CardHeader className="p-4 sm:p-6">
+              <CardTitle className="text-lg sm:text-xl">Collateral Information</CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                <div className="flex justify-between items-center p-3 rounded-lg bg-gray-800/40">
-                  <span className="text-gray-400">Collection</span>
-                  <span className="text-white font-medium">{loanDetails.collateral}</span>
-                </div>
-                <div className="flex justify-between items-center p-3 rounded-lg bg-gray-800/40">
-                  <span className="text-gray-400">Token ID</span>
-                  <span className="text-white font-medium">#1234</span>
-                </div>
-                <div className="flex justify-between items-center p-3 rounded-lg bg-gray-800/40">
-                  <span className="text-gray-400">Floor Value</span>
-                  <span className="text-white font-medium">{loanDetails.collateralValue}</span>
-                </div>
+            <CardContent className="p-4 sm:p-6">
+              <div className="space-y-3 sm:space-y-4">
+                {[
+                  { label: "Collection", value: loanDetails.collateral },
+                  { label: "Token ID", value: "#1234" },
+                  { label: "Floor Value", value: loanDetails.collateralValue }
+                ].map((item, index) => (
+                  <div key={index} className="flex justify-between items-center p-2.5 sm:p-3 rounded-lg bg-gray-800/40">
+                    <span className="text-sm text-gray-400">{item.label}</span>
+                    <span className="text-sm sm:text-base text-white font-medium">{item.value}</span>
+                  </div>
+                ))}
               </div>
             </CardContent>
           </Card>
 
           <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 transition-all duration-300 order-3">
-            <CardHeader>
-              <CardTitle>Loan Health</CardTitle>
+            <CardHeader className="p-4 sm:p-6">
+              <CardTitle className="text-lg sm:text-xl">Loan Health</CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                <div className="p-4 rounded-xl bg-gray-800/40 border border-gray-700/30">
+            <CardContent className="p-4 sm:p-6">
+              <div className="space-y-3 sm:space-y-4">
+                <div className="p-3 sm:p-4 rounded-xl bg-gray-800/40 border border-gray-700/30">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-gray-400">Health Factor</span>
-                    <span className="text-green-400 font-medium">{loanDetails.healthFactor}</span>
+                    <span className="text-sm text-gray-400">Health Factor</span>
+                    <span className="text-sm sm:text-base text-green-400 font-medium">{loanDetails.healthFactor}</span>
                   </div>
                   <div className="w-full bg-gray-700/50 rounded-full h-2">
                     <div 
@@ -196,36 +178,37 @@ export default function LoanDetailsPage() {
                     />
                   </div>
                 </div>
-                <div className="flex justify-between items-center p-3 rounded-lg bg-gray-800/40">
-                  <span className="text-gray-400">Start Date</span>
-                  <span className="text-white font-medium">{loanDetails.startDate}</span>
-                </div>
-                <div className="flex justify-between items-center p-3 rounded-lg bg-gray-800/40">
-                  <span className="text-gray-400">End Date</span>
-                  <span className="text-white font-medium">{loanDetails.endDate}</span>
-                </div>
+                {[
+                  { label: "Start Date", value: loanDetails.startDate },
+                  { label: "End Date", value: loanDetails.endDate }
+                ].map((item, index) => (
+                  <div key={index} className="flex justify-between items-center p-2.5 sm:p-3 rounded-lg bg-gray-800/40">
+                    <span className="text-sm text-gray-400">{item.label}</span>
+                    <span className="text-sm sm:text-base text-white font-medium">{item.value}</span>
+                  </div>
+                ))}
               </div>
             </CardContent>
           </Card>
 
           <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 transition-all duration-300 order-4 lg:col-span-2">
-            <CardHeader>
-              <CardTitle>Payment History</CardTitle>
+            <CardHeader className="p-4 sm:p-6">
+              <CardTitle className="text-lg sm:text-xl">Payment History</CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
+            <CardContent className="p-4 sm:p-6">
+              <div className="space-y-3 sm:space-y-4">
                 {loanDetails.paymentHistory.map((payment, index) => (
-                  <div key={index} className="flex items-center justify-between p-4 rounded-xl bg-gray-800/40 border border-gray-700/30">
-                    <div className="flex items-center gap-4">
+                  <div key={index} className="flex items-center justify-between p-3 sm:p-4 rounded-xl bg-gray-800/40 border border-gray-700/30">
+                    <div className="flex items-center gap-3 sm:gap-4">
                       <div className="p-2 rounded-lg bg-gray-700/50">
-                        <History className="w-5 h-5 text-gray-400" />
+                        <History className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
                       </div>
                       <div>
-                        <p className="text-white font-medium">{payment.type}</p>
-                        <p className="text-sm text-gray-400">{payment.date}</p>
+                        <p className="text-sm sm:text-base text-white font-medium">{payment.type}</p>
+                        <p className="text-xs sm:text-sm text-gray-400">{payment.date}</p>
                       </div>
                     </div>
-                    <p className="text-white font-medium">{payment.amount}</p>
+                    <p className="text-sm sm:text-base text-white font-medium">{payment.amount}</p>
                   </div>
                 ))}
               </div>
