@@ -1,5 +1,5 @@
 "use client"
-// DashboardLayout.tsx
+
 import React, { ReactNode, useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { Navbar } from '@/components/layout/Navbar';
@@ -9,13 +9,27 @@ interface DashboardLayoutProps {
   children: ReactNode;
 }
 
+// Define NavbarProps to match what you're passing to the Navbar component
+interface NavbarProps {
+  isSidebarOpen: boolean;
+  onToggleSidebar: () => void;
+  walletAddress: string;
+  networkStatus: 'connected' | 'disconnected';
+}
+
+// Define SidebarProps
+interface SidebarProps {
+  isOpen: boolean;
+  onClose: () => void;
+  walletAddress: string;
+}
+
 const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   const pathname = usePathname();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [networkStatus] = useState<'connected' | 'disconnected'>('connected');
   const [walletAddress] = useState('0x1234...5678');
   const [isMobile, setIsMobile] = useState(false);
-
 
   useEffect(() => {
     const checkMobile = () => {
@@ -52,12 +66,10 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   };
 
   return (
-    <div className=" bg-gray-900">
+    <div className="bg-gray-900">
       <Navbar
         isSidebarOpen={isSidebarOpen}
         onToggleSidebar={toggleSidebar}
-        walletAddress={walletAddress}
-        networkStatus={networkStatus}
       />
 
       <Sidebar
