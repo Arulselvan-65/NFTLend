@@ -48,33 +48,33 @@ export default function DashboardPage() {
             value={`${parseFloat(balance).toFixed(4)} ETH`}
             description="+20.1% from last month"
             icon={DollarSign}
-            className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300"
+            className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 transition-all duration-300"
           />
           <StatsCard
             title="Active Loans"
             value="24"
             description="+12 since last week"
             icon={Activity}
-            className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300"
+            className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 transition-all duration-300"
           />
           <StatsCard
             title="Total Value Locked"
             value="156.4 ETH"
             description="+4.3% from last week"
             icon={ShieldCheck}
-            className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300"
+            className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 transition-all duration-300"
           />
           <StatsCard
             title="Avg. Interest Rate"
             value="5.2%"
             description="-0.5% from last month"
             icon={BarChart3}
-            className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300"
+            className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 transition-all duration-300"
           />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-          <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300">
+          <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 transition-all duration-300">
             <CardHeader>
               <CardTitle >
                 Weekly Activity
@@ -88,7 +88,7 @@ export default function DashboardPage() {
             </CardContent>
           </Card>
 
-          <Card className="bg-gray-900/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300">
+          <Card className="bg-gray-900/30 backdrop-blur-xl border border-gray-700/30 transition-all duration-300">
             <CardHeader>
               <CardTitle>
                 Recent Activity
@@ -122,7 +122,7 @@ export default function DashboardPage() {
           </Card>
         </div>
 
-        <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300 mb-16">
+        <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 transition-all duration-300 mb-16">
           <CardHeader>
             <CardTitle className="text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-fuchsia-500">
               Active Loans

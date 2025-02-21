@@ -38,7 +38,7 @@ export default function LendPage() {
 
       <div className="relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 mt-3">
-          <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300">
+          <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 transition-all duration-300">
             <CardContent className="p-4 pt-6 flex">
               <div className="flex items-center gap-4">
                 <div className="p-3 rounded-xl bg-violet-500/10 border border-violet-500/20">
@@ -52,7 +52,7 @@ export default function LendPage() {
             </CardContent>
           </Card>
 
-          <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300">
+          <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 transition-all duration-300">
             <CardContent className="p-4 pt-6 flex">
               <div className="flex items-center gap-4">
                 <div className="p-3 rounded-xl bg-fuchsia-500/10 border border-fuchsia-500/20">
@@ -66,7 +66,7 @@ export default function LendPage() {
             </CardContent>
           </Card>
 
-          <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300">
+          <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 transition-all duration-300">
             <CardContent className="p-4 pt-6 flex">
               <div className="flex items-center gap-4">
                 <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20">
@@ -144,7 +144,7 @@ export default function LendPage() {
                 key={opportunity.id} 
                 href={`/dashboard/lend/${opportunity.id}`}
               >
-                <div className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/50 rounded-xl p-4 space-y-4 hover:border-violet-500/30 transition-all duration-300 mt-5">
+                <div className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/50 rounded-xl p-4 space-y-4 transition-all duration-300 mt-5">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 bg-violet-500/10 rounded-xl flex items-center justify-center text-violet-500 font-medium">

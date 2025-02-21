@@ -42,7 +42,7 @@ export default function BorrowPage() {
             {borrowRequests.length} Active Requests
           </span>
           <Link href="/dashboard/borrow/new">
-            <button className="px-4 py-2 rounded-xl bg-gray-800/50 backdrop-blur-xl border border-violet-500/20 text-violet-400 font-medium transition-all duration-300 hover:bg-violet-500/20 hover:border-violet-500/30 hover:text-violet-300">
+            <button className="px-4 py-2 rounded-xl bg-gray-800/50 backdrop-blur-xl border border-violet-500/20 text-violet-400 font-medium transition-all duration-300 hover:bg-violet-500/20 hover:text-violet-300">
               <span className="flex items-center gap-2">
                 <Plus className="w-4 h-4" />
                 <span>Create Request</span>
@@ -52,7 +52,7 @@ export default function BorrowPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300">
+          <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 transition-all duration-300">
             <CardContent className="p-4 pt-6 flex">
               <div className="flex items-center gap-4">
                 <div className="p-3 rounded-xl bg-violet-500/10 border border-violet-500/20">
@@ -66,7 +66,7 @@ export default function BorrowPage() {
             </CardContent>
           </Card>
 
-          <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300">
+          <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 transition-all duration-300">
             <CardContent className="p-4 pt-6 flex">
               <div className="flex items-center gap-4">
                 <div className="p-3 rounded-xl bg-fuchsia-500/10 border border-fuchsia-500/20">
@@ -80,7 +80,7 @@ export default function BorrowPage() {
             </CardContent>
           </Card>
 
-          <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300">
+          <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 transition-all duration-300">
             <CardContent className="p-4 pt-6 flex">
               <div className="flex items-center gap-4">
                 <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20">

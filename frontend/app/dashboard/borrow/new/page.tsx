@@ -49,7 +49,7 @@ const CreateLoanPage = () => {
           </div>
         </div>
 
-        <Card className="my-10 bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300 max-w-2xl mx-auto shadow-xl">
+        <Card className="my-10 bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 transition-all duration-300 max-w-2xl mx-auto shadow-xl">
           <CardHeader>
             <CardTitle className="text-xl">Create New Loan</CardTitle>
             <CardDescription>Enter the details for your NFT-backed loan request</CardDescription>

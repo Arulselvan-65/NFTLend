@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Wallet, Clock, ArrowLeft, History, Tag, Percent, Calendar } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogFooter } from '@/components/ui/dialog';
 import Link from 'next/link';
 
 export default function LoanDetailsPage() {
@@ -26,6 +27,15 @@ export default function LoanDetailsPage() {
     ],
     lenderAddress: "0x1234567890abcdef"
   });
+
+  const [paymentAmount, setPaymentAmount] = useState("");
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const handlePayment = () => {
+    console.log(`Processing payment of ${paymentAmount} ETH`);
+    setIsDialogOpen(false);
+    setPaymentAmount("");
+  };
 
   return (
     <div className="min-h-screen bg-gray-900 relative overflow-hidden">
@@ -56,20 +66,50 @@ export default function LoanDetailsPage() {
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
-              <span className={`px-3 py-1.5 rounded-full text-sm font-medium 
-                ${loanDetails.status === 'active'
-                  ? 'bg-green-500/10 text-green-400 border border-green-500/20'
-                  : 'bg-orange-500/10 text-orange-400 border border-orange-500/20'
-                }`}>
-                {loanDetails.status.charAt(0).toUpperCase() + loanDetails.status.slice(1)}
-              </span>
+            <div className="flex items-center gap-4">
+              <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                <DialogTrigger asChild>
+                  <button className="px-6 py-3 rounded-2xl bg-emerald-500 text-white font-medium text-base flex items-center justify-center gap-2 transition-all duration-300 hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-500/20">
+                    <Wallet className="w-5 h-5" />
+                    <span>Repay Loan</span>
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="bg-gray-800 border-gray-700 text-white">
+                  <DialogHeader>
+                    <DialogTitle>Make a Payment</DialogTitle>
+                  </DialogHeader>
+                  <div className="py-4">
+                    <div className="space-y-4">
+                      <div className="space-y-2">
+                        <label className="text-sm text-gray-400">Payment Amount (ETH)</label>
+                        <input
+                          type="text"
+                          step="0.001"
+                          value={paymentAmount}
+                          onChange={(e) => setPaymentAmount(e.target.value)}
+                          className="w-full px-4 py-2 rounded-xl bg-gray-700 border border-gray-600 text-white focus:outline-none "
+                          placeholder="0.00"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <DialogFooter>
+                    <button
+                      onClick={handlePayment}
+                      className="px-6 py-2 rounded-xl bg-emerald-500 text-white font-medium hover:bg-emerald-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      disabled={!paymentAmount}
+                    >
+                      Confirm Payment
+                    </button>
+                  </DialogFooter>
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300 order-1 lg:col-span-2">
+          <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 transition-all duration-300 order-1 lg:col-span-2">
             <CardHeader>
               <CardTitle>Loan Overview</CardTitle>
             </CardHeader>
@@ -116,7 +156,7 @@ export default function LoanDetailsPage() {
             </CardContent>
           </Card>
 
-          <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300 order-2">
+          <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 transition-all duration-300 order-2">
             <CardHeader>
               <CardTitle>Collateral Information</CardTitle>
             </CardHeader>
@@ -138,7 +178,7 @@ export default function LoanDetailsPage() {
             </CardContent>
           </Card>
 
-          <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300 order-3">
+          <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 transition-all duration-300 order-3">
             <CardHeader>
               <CardTitle>Loan Health</CardTitle>
             </CardHeader>
@@ -150,7 +190,10 @@ export default function LoanDetailsPage() {
                     <span className="text-green-400 font-medium">{loanDetails.healthFactor}</span>
                   </div>
                   <div className="w-full bg-gray-700/50 rounded-full h-2">
-                    <div className="bg-gradient-to-r from-green-500 to-green-400 h-2 rounded-full" style={{ width: `${(parseFloat(loanDetails.healthFactor) / 2) * 100}%` }} />
+                    <div 
+                      className="bg-gradient-to-r from-green-500 to-green-400 h-2 rounded-full" 
+                      style={{ width: `${(parseFloat(loanDetails.healthFactor) / 2) * 100}%` }} 
+                    />
                   </div>
                 </div>
                 <div className="flex justify-between items-center p-3 rounded-lg bg-gray-800/40">
@@ -165,7 +208,7 @@ export default function LoanDetailsPage() {
             </CardContent>
           </Card>
 
-          <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300 order-4 lg:col-span-2">
+          <Card className="bg-gray-800/30 backdrop-blur-xl border border-gray-700/30 transition-all duration-300 order-4 lg:col-span-2">
             <CardHeader>
               <CardTitle>Payment History</CardTitle>
             </CardHeader>
