@@ -4,20 +4,56 @@ import React, { useState } from 'react';
 import { ArrowLeft, Info } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import Link from 'next/link';
+import { useCreateAccount } from '@/utils/createLoan';
+import { parseEther } from 'viem';
 
 const CreateLoanPage = () => {
+  const { createLoan, isPending, isSuccess, isError } = useCreateAccount();
+
   const [formData, setFormData] = useState({
-    nftContract: '',
+    nftContractAddress: '',
     tokenId: '',
     loanAmount: '',
   });
 
-  const handleSubmit = (e: any) => {
+  const [errorMessage, setErrorMessage] = useState<string>("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    setErrorMessage("");
+    
+    try {
+      // Basic input validation
+      if (!formData.nftContractAddress.startsWith('0x')) {
+        setErrorMessage("NFT contract address must start with 0x");
+        return;
+      }
+
+      if (!formData.tokenId.match(/^\d+$/)) {
+        setErrorMessage("Token ID must be a valid number");
+        return;
+      }
+
+      if (isNaN(Number(formData.loanAmount)) || Number(formData.loanAmount) <= 0) {
+        setErrorMessage("Loan amount must be a valid positive number");
+        return;
+      }
+
+      // Convert values to appropriate types
+      const params = {
+        nftContractAddress: formData.nftContractAddress as `0x${string}`,
+        tokenId: formData.tokenId,
+        loanAmount: parseEther(formData.loanAmount) // Convert ETH to Wei
+      };
+
+      await createLoan(params);
+    } catch (error: any) {
+      console.error('Error creating loan:', error);
+      setErrorMessage(error.message || "Failed to create loan. Please try again.");
+    }
   };
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -63,8 +99,8 @@ const CreateLoanPage = () => {
                   </label>
                   <input
                     type="text"
-                    name="nftContract"
-                    value={formData.nftContract}
+                    name="nftContractAddress"
+                    value={formData.nftContractAddress}
                     onChange={handleChange}
                     className="w-full px-4 py-3 outline-none rounded-xl bg-gray-800/40 border border-gray-700/30 focus:border-violet-500/50 focus:ring-violet-500/20 transition-all duration-300 text-white placeholder-gray-500"
                     placeholder="0x..."
@@ -113,14 +149,28 @@ const CreateLoanPage = () => {
               <div className="pt-4">
                 <button
                   type="submit"
+                  disabled={isPending}
                   className="w-full px-4 py-3 rounded-xl bg-violet-500/20 backdrop-blur-sm border border-violet-500/30 
                   text-violet-300 font-medium transition-all duration-300 
                   hover:bg-violet-500/30 hover:border-violet-400/50 hover:text-violet-200 
-                  focus:ring-2 focus:ring-violet-500/20 focus:ring-offset-2 focus:ring-offset-gray-900"
+                  focus:ring-2 focus:ring-violet-500/20 focus:ring-offset-2 focus:ring-offset-gray-900
+                  disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Create Loan Request
+                  {isPending ? 'Creating Loan...' : 'Create Loan Request'}
                 </button>
               </div>
+
+              {isSuccess && (
+                <div className="mt-4 p-4 rounded-lg bg-green-500/20 border border-green-500/30 text-green-300">
+                  Loan request created successfully!
+                </div>
+              )}
+
+              {(isError || errorMessage) && (
+                <div className="mt-4 p-4 rounded-lg bg-red-500/20 border border-red-500/30 text-red-300">
+                  {errorMessage || "Error creating loan request. Please try again."}
+                </div>
+              )}
             </form>
           </CardContent>
         </Card>

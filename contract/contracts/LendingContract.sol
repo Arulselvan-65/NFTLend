@@ -181,9 +181,13 @@ contract LendingContract is ERC721Holder, ReentrancyGuard, Pausable {
     }
 
     function getMaxLoanAmount(address nftContract) public view returns (uint96) {
-        uint96 ltv = collectionLTVs[nftContract] > 0 ? collectionLTVs[nftContract] : BASE_LTV;
-        return uint96((uint256(defaultNFTPrice) * ltv) / 10000);
-    }
+    uint96 ltv = collectionLTVs[nftContract] > 0 ? collectionLTVs[nftContract] : BASE_LTV;
+    uint256 maxLoan = (uint256(defaultNFTPrice) * ltv) / 10000;
+
+    require(maxLoan <= type(uint96).max, "Value exceeds uint96 limit");
+    return uint96(maxLoan);
+}
+
 
     function setCollectionLTV(address collection, uint96 ltv) external onlyOwner {
         if (ltv > 7000) revert MaxLTVExceeded();
@@ -194,6 +198,10 @@ contract LendingContract is ERC721Holder, ReentrancyGuard, Pausable {
     function setDefaultNFTPrice(uint96 price) external onlyOwner {
         defaultNFTPrice = price;
     }
+
+function setNFTApproval(address nftContract, uint96 tokenId) external {
+    IERC721(nftContract).approve(address(this), tokenId);
+}
 
     function _refundBids(uint256 loanId, uint256 excludeIndex) private {
         LoanOffer[] storage offers = loanOffers[loanId];
