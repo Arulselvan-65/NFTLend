@@ -4,11 +4,11 @@ import React, { useState } from 'react';
 import { ArrowLeft, Info } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import Link from 'next/link';
-import { useCreateAccount } from '@/utils/createLoan';
+import { useCreateLoan } from '@/utils/createLoan';
 import { parseEther } from 'viem';
 
 const CreateLoanPage = () => {
-  const { createLoan, isPending, isSuccess, isError } = useCreateAccount();
+  const { createLoan, isPending, isSuccess, isError } = useCreateLoan();
 
   const [formData, setFormData] = useState({
     nftContractAddress: '',
